@@ -13,10 +13,9 @@ function Menu() {
             id="menu"
             direction="column"
             alignItems="center"
-            justifyContent="start"
+            justifyContent="center"
             gap="7rem"
             sx={{
-                // minHeight: "100vh",
                 padding: "1rem",
                 paddingBlock: "10rem",
                 backgroundColor: "success.main",
@@ -44,8 +43,8 @@ function Menu() {
                     sx={{ backgroundColor: "secondary.main", width: "3px" }}
                 />
                 <Button variant="contained" color="secondary">
-                    <Stack direction="row" gap="1rem">
-                        Reserver une table
+                    <Stack id="resa" direction="row" gap="1rem">
+                        Réserver une table
                         <EastIcon />
                     </Stack>
                 </Button>

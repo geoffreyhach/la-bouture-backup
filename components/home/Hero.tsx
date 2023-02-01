@@ -1,11 +1,26 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useLayoutEffect, useRef } from "react";
+import { Typography } from "@mui/material";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 import Header from "../Header";
-import { homedir } from "os";
+
 import { Stack } from "@mui/system";
 
 function Hero() {
+    gsap.registerPlugin(ScrollTrigger);
+    const ref = useRef(null);
+
+    useLayoutEffect(() => {
+        gsap.to(ref.current, {
+            scrollTrigger: {
+                trigger: ref.current,
+                start: 100,
+                scrub: true,
+            },
+            y: 100,
+        });
+    }, []);
     return (
         <Stack
             justifyContent="flex-start"
@@ -22,6 +37,7 @@ function Hero() {
         >
             <Header />
             <Stack
+                ref={ref}
                 alignItems="center"
                 sx={{ position: "relative", inset: "0", margin: "auto" }}
             >

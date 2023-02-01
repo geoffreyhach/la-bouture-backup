@@ -1,9 +1,9 @@
-import { Typography } from "@mui/material";
-import { Box, Stack } from "@mui/system";
+import React, { useLayoutEffect, useRef } from "react";
 import Image, { StaticImageData } from "next/image";
-import React from "react";
-
-import food from "../../public/food.png";
+import { Typography } from "@mui/material";
+import { Stack } from "@mui/system";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 interface MenuSectionProps {
     reversed?: Boolean;
@@ -13,9 +13,33 @@ interface MenuSectionProps {
 }
 
 function MenuSection({ reversed, title, text, image }: MenuSectionProps) {
+    gsap.registerPlugin(ScrollTrigger);
+    const imgRef = useRef(null);
+
+    const getImgXValue = () => {
+        if (reversed) return -50;
+        else return 50;
+    };
+
+    useLayoutEffect(() => {
+        gsap.from(imgRef.current, {
+            scrollTrigger: {
+                trigger: imgRef.current,
+                start: "top bottom",
+                end: "top center",
+                scrub: true,
+            },
+            x: getImgXValue(),
+        });
+    }, [reversed]);
+
     return (
         <Stack
-            direction={reversed ? "row-reverse" : "row"}
+            direction={
+                reversed
+                    ? { sm: "column", md: "row-reverse" }
+                    : { sm: "column", md: "row" }
+            }
             alignItems="center"
             justifyContent="center"
             gap={10}
@@ -23,23 +47,17 @@ function MenuSection({ reversed, title, text, image }: MenuSectionProps) {
                 maxWidth: "1200px",
             }}
         >
-            <Stack alignItems="flex-start">
+            <Stack alignItems={{ sm: "center", md: "flex-start" }}>
                 <Typography variant="subtitle1">{title}</Typography>
-                <Typography variant="h3">{text}</Typography>
+                <Typography
+                    variant="h3"
+                    sx={{ textAlign: { sm: "center", md: "left" } }}
+                >
+                    {text}
+                </Typography>
             </Stack>
 
-            <Box
-                sx={{
-                    position: "relative",
-                    height: "300px",
-                    width: "800px",
-                    backgroundColor: "red",
-                    border: "8px solid",
-                    borderColor: "secondary.main",
-                }}
-            >
-                <Image src={image} alt="food" fill objectFit={"cover"} />
-            </Box>
+            <Image ref={imgRef} width={400} src={image} alt="food" />
         </Stack>
     );
 }
