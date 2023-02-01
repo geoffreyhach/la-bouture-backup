@@ -1,5 +1,5 @@
+import React, { useLayoutEffect, useRef } from "react";
 import { Stack, Typography } from "@mui/material";
-import React from "react";
 
 function About() {
     return (
@@ -23,9 +23,8 @@ function About() {
                 <Typography variant="subtitle1">Qui sommes nous?</Typography>
                 <Typography variant="h2">LA BOUTURE</Typography>
                 <Typography variant="outlinedh2">EST UNE CANTINE</Typography>
-                <Typography variant="h2">
-                    VEGETALE, SOCIALE ET SOLIDAIRE
-                </Typography>
+                <Typography variant="h2">VEGETALE, SOCIALE</Typography>
+                <Typography variant="outlinedh2">& SOLIDAIRE</Typography>
                 <Typography variant="subtitle1">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
                     dolorum qui explicabo excepturi ipsum quas maiores culpa

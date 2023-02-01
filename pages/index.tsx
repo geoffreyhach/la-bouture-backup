@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
 
-import { Typography } from "@mui/material";
 import Hero from "@/components/home/Hero";
 import About from "@/components/About/About";
 import Menu from "@/components/Menu/Menu";
 import Partners from "@/components/Partners/Partners";
+import Address from "@/components/Address/Address";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +28,7 @@ export default function Home() {
                 <Hero />
                 <About />
                 <Menu />
+                <Address />
                 <Partners />
             </main>
         </>

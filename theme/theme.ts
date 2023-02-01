@@ -1,12 +1,13 @@
 import { createTheme } from "@mui/material/styles";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
+import "@fontsource/cormorant-garamond";
 
 const defaultTheme = createTheme();
 
 const theme = createTheme({
     typography: {
         h1: {
-            fontFamily: "Didact Gothic",
+            fontFamily: "Cormorant Garamond",
             fontWeight: "900",
             letterSpacing: ".2rem",
             fontSize: "5rem",

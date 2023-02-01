@@ -1,11 +1,12 @@
 import React from "react";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import EastIcon from "@mui/icons-material/East";
+
 import Image from "next/image";
 
 import drink from "../../public/drinks.png";
 import food from "../../public/food.png";
 import MenuSection from "./MenuSection";
+import Booking from "./Booking";
 
 function Menu() {
     return (
@@ -13,10 +14,9 @@ function Menu() {
             id="menu"
             direction="column"
             alignItems="center"
-            justifyContent="start"
+            justifyContent="center"
             gap="7rem"
             sx={{
-                // minHeight: "100vh",
                 padding: "1rem",
                 paddingBlock: "10rem",
                 backgroundColor: "success.main",
@@ -43,12 +43,7 @@ function Menu() {
                     flexItem
                     sx={{ backgroundColor: "secondary.main", width: "3px" }}
                 />
-                <Button variant="contained" color="secondary">
-                    <Stack direction="row" gap="1rem">
-                        Reserver une table
-                        <EastIcon />
-                    </Stack>
-                </Button>
+                <Booking />
             </Stack>
         </Stack>
     );

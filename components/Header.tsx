@@ -17,45 +17,56 @@ const menuLinkStyle = {
 
 function Header() {
     return (
-        <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent={{ xs: "center", md: "space-between" }}
-            sx={{ width: "100vw", paddingInline: "1rem" }}
-        >
-            <Stack
-                direction="row"
-                gap={2}
-                sx={{ display: { xs: "none", md: "flex" } }}
-            >
-                <Link href="/" sx={menuLinkStyle}>
-                    Home
-                </Link>
-                <Link href="#carte" sx={menuLinkStyle}>
-                    Carte
-                </Link>
-                <Link href="/" sx={menuLinkStyle}>
-                    Événements
-                </Link>
-                <Link href="/" sx={menuLinkStyle}>
-                    Resa
-                </Link>
-            </Stack>
+        <>
             <Typography
                 variant="h1"
                 color="secondary"
                 textAlign="center"
                 noWrap
+                sx={{
+                    position: "absolute",
+                    top: "0",
+                    margin: "auto",
+                }}
             >
-                LA BOUTURE
+                la bouture
             </Typography>
-            <Link
-                href="/"
-                sx={{ ...menuLinkStyle, display: { xs: "none", md: "flex" } }}
+            <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent={{ xs: "center", md: "space-between" }}
+                sx={{ width: "100vw", padding: "2rem 1rem" }}
             >
-                Contact
-            </Link>
-        </Stack>
+                <Stack
+                    direction="row"
+                    gap={2}
+                    sx={{ display: { xs: "none", md: "flex" } }}
+                >
+                    <Link href="#about" sx={menuLinkStyle}>
+                        QUI
+                    </Link>
+                    <Link href="#menu" sx={menuLinkStyle}>
+                        QUOI
+                    </Link>
+                    <Link href="#map" sx={menuLinkStyle}>
+                        OÙ
+                    </Link>
+                    <Link href="#resa" sx={menuLinkStyle}>
+                        COMMENT
+                    </Link>
+                </Stack>
+
+                <Link
+                    href="/"
+                    sx={{
+                        ...menuLinkStyle,
+                        display: { xs: "none", md: "flex" },
+                    }}
+                >
+                    Contact
+                </Link>
+            </Stack>
+        </>
     );
 }
 

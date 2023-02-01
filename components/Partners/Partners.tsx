@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import Image from "next/image";
+import gsap from "gsap";
 
-const data = ["Moxka", "Origin", "Paradise", "URSCOP", "HEURA", "MES COUILLES"];
+const data = ["Moxka", "Origin", "Paradise", "URSCOP", "HEURA"];
 
 function Partners() {
+    const carouselRef = useRef();
+    console.log(carouselRef.current);
+
+    // useLayoutEffect(() => {
+    //     gsap.to(carouselRef.current, { rotation: "+=360" });
+    // });
     return (
         <Stack
             id="partners"
             direction="column"
             alignItems="center"
             justifyContent="start"
-            gap="7rem"
+            gap="1rem"
             sx={{
                 // minHeight: "100vh",
                 padding: "1rem",
@@ -21,7 +28,7 @@ function Partners() {
             }}
         >
             <Typography variant="outlinedh2">Nos partenaires</Typography>
-            <Stack direction="row" gap="1rem">
+            <Stack ref={carouselRef} gap="1rem">
                 {data.map((d) => {
                     return (
                         <Typography key={data.indexOf(d)} variant="h2">
