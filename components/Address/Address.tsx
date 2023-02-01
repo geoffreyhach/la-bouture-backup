@@ -10,7 +10,7 @@ console.log(token);
 
 function Address() {
     gsap.registerPlugin(ScrollTrigger);
-    const mapRef = useRef(null);
+    const mapRef = useRef<any>(null);
     const [viewState, setViewState] = useState({
         longitude: 7.761929,
         latitude: 48.574077,
