@@ -49,7 +49,7 @@ const theme = createTheme({
             textTransform: "uppercase",
 
             [defaultTheme.breakpoints.down("md")]: {
-                fontSize: "4rem",
+                fontSize: "3rem",
             },
         },
         subtitle1: {
