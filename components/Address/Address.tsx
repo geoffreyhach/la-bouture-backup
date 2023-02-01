@@ -10,7 +10,7 @@ console.log(token);
 
 function Address() {
     gsap.registerPlugin(ScrollTrigger);
-    const mapRef = useRef<mapboxgl.Map>(null);
+    const mapRef = useRef<any>(null);
     const [viewState, setViewState] = useState({
         longitude: 7.761929,
         latitude: 48.574077,
@@ -32,48 +32,70 @@ function Address() {
     }, []);
 
     return (
-        <Stack
-            id="map"
-            alignItems="center"
-            gap="1rem"
-            sx={{ backgroundColor: "secondary.main", padding: "2rem" }}
-        >
-            <Map
-                {...viewState}
-                ref={mapRef}
-                id="mapbox"
-                initialViewState={viewState}
-                mapboxAccessToken={token}
-                onMove={(evt) => setViewState(evt.viewState)}
-                pitch={60}
+        <>
+            <span
+                className="anchor"
+                id="map"
                 style={{
-                    width: 600,
-                    height: 400,
-                    margin: "auto",
-                    border: "8px solid #465B3C",
+                    position: "absolute",
+                    transform: "translateY(-25vh)",
                 }}
-                mapStyle="mapbox://styles/geoffreyhach/cldljop1u001d01ogcbyqr3eg"
+            ></span>
+            <Stack
+                alignItems="center"
+                gap="1rem"
+                sx={{ backgroundColor: "secondary.main", padding: "2rem" }}
             >
-                <Marker
-                    longitude={7.761883366966186}
-                    latitude={48.574178472071985}
+                <Map
+                    {...viewState}
+                    ref={mapRef}
+                    id="mapbox"
+                    initialViewState={viewState}
+                    mapboxAccessToken={token}
+                    onMove={(evt) => setViewState(evt.viewState)}
+                    pitch={60}
+                    style={{
+                        width: 600,
+                        height: 400,
+                        maxWidth: "80vw",
+                        margin: "auto",
+                        border: "8px solid #465B3C",
+                    }}
+                    mapStyle="mapbox://styles/geoffreyhach/cldljop1u001d01ogcbyqr3eg"
                 >
-                    <PlaceIcon fontSize="large" color="primary" />
-                </Marker>
-            </Map>
-            <Stack alignItems="center" sx={{ opacity: ".5" }}>
-                <Typography>Nous trouver :</Typography>
-                <Typography sx={{ fontStyle: "italic" }}>
-                    {`11 Presqu'île André-Malraux, 67100 Strasbourg`}
-                </Typography>
-                <Typography sx={{ fontStyle: "italic" }}>
-                    Arrêt de tram : Winston Churchill
-                </Typography>
-                <Typography sx={{ fontStyle: "italic" }}>
-                    Arrêt de bus : Sécurité Sociale
-                </Typography>
+                    <Marker
+                        longitude={7.761883366966186}
+                        latitude={48.574178472071985}
+                    >
+                        <PlaceIcon fontSize="large" color="primary" />
+                    </Marker>
+                </Map>
+                <Stack alignItems="center" sx={{ opacity: ".5" }}>
+                    <Typography>Nous trouver :</Typography>
+                    <Typography sx={{ fontStyle: "italic" }}>
+                        {`11 Presqu'île André-Malraux, 67100 Strasbourg`}
+                    </Typography>
+                    <Typography sx={{ fontStyle: "italic" }} display="inline">
+                        <Typography
+                            sx={{ fontWeight: "bold" }}
+                            display="inline"
+                        >
+                            Arrêt de tram :
+                        </Typography>{" "}
+                        Winston Churchill
+                    </Typography>
+                    <Typography sx={{ fontStyle: "italic" }} display="inline">
+                        <Typography
+                            sx={{ fontWeight: "bold" }}
+                            display="inline"
+                        >
+                            Arrêt de bus :
+                        </Typography>{" "}
+                        Sécurité Sociale
+                    </Typography>
+                </Stack>
             </Stack>
-        </Stack>
+        </>
     );
 }
 

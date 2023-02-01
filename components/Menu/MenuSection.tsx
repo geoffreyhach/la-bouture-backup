@@ -51,7 +51,7 @@ function MenuSection({ reversed, title, text, image }: MenuSectionProps) {
                 <Typography variant="subtitle1">{title}</Typography>
                 <Typography
                     variant="h3"
-                    sx={{ textAlign: { sm: "center", md: "left" } }}
+                    sx={{ textAlign: { xs: "center", md: "left" } }}
                 >
                     {text}
                 </Typography>

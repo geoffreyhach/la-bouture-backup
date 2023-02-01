@@ -42,6 +42,9 @@ function Header() {
                     gap={2}
                     sx={{ display: { xs: "none", md: "flex" } }}
                 >
+                    <Link href="#about" sx={menuLinkStyle}>
+                        QUI
+                    </Link>
                     <Link href="#menu" sx={menuLinkStyle}>
                         QUOI
                     </Link>

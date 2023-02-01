@@ -1,27 +1,29 @@
-import connectDb from "../db";
-import { Resa } from "../models";
-import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import connectDB from "../db";
+import { Resa } from "../resa.model";
+import { NextApiRequest, NextApiResponse } from "next";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "GET") {
-        const resa = await Resa.find();
-        try {
-            res.status(200).json(resa);
-        } catch {
-            res.status(500).send("error");
-        }
+        console.log("uihsdfjbgnfg");
+        const result = await Resa.find();
+        res.status(200).json(result);
     }
 
     if (req.method === "POST") {
-        const { date, client, number } = req.body;
+        console.log(Resa);
+        const { date, client, number, phone } = req.body;
+        console.log(req.body);
 
         const resa = new Resa({
             date,
             client,
             number,
+            phone,
         });
-        res.status(200).json(resa);
+        console.log(resa);
+        const newResa = await resa.save();
+        res.status(200).json(newResa);
     }
 }
 
-export default connectDb(handler);
+export default connectDB(handler);

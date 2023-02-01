@@ -9,6 +9,10 @@ const resaSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    phone: {
+        type: Number,
+        required: true,
+    },
     number: {
         type: Number,
         required: true,
@@ -18,4 +22,4 @@ const resaSchema = new mongoose.Schema({
 
 // mongoose.models = {};
 
-export const Resa = mongoose.model("resa", resaSchema);
+export const Resa = mongoose.models.Resa || mongoose.model("Resa", resaSchema);
