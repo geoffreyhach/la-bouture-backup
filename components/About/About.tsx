@@ -8,7 +8,7 @@ function About() {
             alignItems="center"
             justifyContent="center"
             sx={{
-                height: "100vh",
+                minHeight: "100vh",
                 padding: "1rem",
                 backgroundColor: "primary.main",
             }}
