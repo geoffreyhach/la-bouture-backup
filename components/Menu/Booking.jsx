@@ -15,7 +15,7 @@ import { MuiTelInput } from "mui-tel-input";
 
 //date library
 import "react-datepicker/dist/react-datepicker.css";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import DatePicker from "react-datepicker";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import setHours from "date-fns/setHours";
