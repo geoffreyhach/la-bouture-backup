@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import axios from "axios";
+
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
-import { Types } from "mongoose";
-import { v4 as uuidv4 } from "uuid";
 import { Stack, Typography } from "@mui/material";
+import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 
+// db logic
+import mongoose from "mongoose";
+import { Types } from "mongoose";
+const url = String(process.env.NEXT_PUBLIC_MONGO_ADDRESS);
 import { Resa } from "../api/resa.model";
-import { getData } from "../api/resa";
+const connectToDb = async () => {
+    await mongoose.connect(url);
+};
 
 const todaysColumns: GridColDef[] = [
     {
@@ -76,7 +81,6 @@ interface DashboardProps {
 
 function Dashboard({ resa }: DashboardProps) {
     const [today, setToday] = useState(dayjs);
-    console.log(resa);
 
     return (
         <Stack
@@ -172,8 +176,11 @@ function Dashboard({ resa }: DashboardProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const res = await getData();
-    const resa = JSON.parse(res);
+    await connectToDb();
+    const data = await Resa.find();
+    const jsonRsa = await JSON.stringify(data);
+    const resa = await JSON.parse(jsonRsa);
+
     return {
         props: {
             resa,
