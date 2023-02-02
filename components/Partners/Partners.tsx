@@ -1,13 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Stack, Typography } from "@mui/material";
 import Marquee from "react-fast-marquee";
 
 const data = ["Moxka", "Origin", "Paradise", "URSCOP"];
 
 function Partners() {
-    const carouselRef = useRef();
-    console.log(carouselRef.current);
-
     return (
         <Stack
             id="partners"

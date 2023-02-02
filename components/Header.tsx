@@ -26,6 +26,7 @@ function Header() {
                     top: "0",
                     margin: "auto",
                     paddingTop: "1rem",
+                    zIndex: "100",
                 }}
             >
                 <svg
@@ -68,7 +69,11 @@ function Header() {
             <Stack
                 direction="row"
                 alignItems="center"
-                justifyContent={{ xs: "center", md: "space-between" }}
+                justifyContent={{
+                    xs: "center",
+                    md: "space-between",
+                    zIndex: "100",
+                }}
                 sx={{ width: "100vw", padding: "2rem 1rem" }}
             >
                 <Stack

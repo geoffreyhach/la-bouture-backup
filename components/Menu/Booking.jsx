@@ -98,7 +98,7 @@ function Booking() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newResa = { ...resa, date: date, phone: phone };
-        console.log(newResa);
+
         await axios.post("/api/resa", newResa);
         setSend(true);
     };

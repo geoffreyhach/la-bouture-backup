@@ -35,13 +35,13 @@ function Hero() {
                 backgroundPosition: "center",
             }}
         >
+            <Header />
             <Image
                 src="/home.webp"
                 alt="background"
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", zIndex: "0" }}
             />
-            <Header />
             <Stack
                 ref={ref}
                 alignItems="center"
