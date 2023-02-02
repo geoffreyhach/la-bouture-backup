@@ -5,6 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "GET") {
         console.log("uihsdfjbgnfg");
+
         const result = await Resa.find();
         res.status(200).json(result);
     }
