@@ -92,7 +92,7 @@ function Address() {
                         >
                             Arrêt de tram :
                         </Box>{" "}
-                        Winston Churchill
+                        Winston Churchill (ligne C/E)
                     </Typography>
                     <Typography sx={{ fontStyle: "italic" }} display="inline">
                         <Box

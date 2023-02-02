@@ -1,18 +1,13 @@
-import React, { useLayoutEffect, useRef } from "react";
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import EastIcon from "@mui/icons-material/East";
-import Image from "next/image";
-import gsap from "gsap";
+import React, { useRef } from "react";
+import { Stack, Typography } from "@mui/material";
+import Marquee from "react-fast-marquee";
 
-const data = ["Moxka", "Origin", "Paradise", "URSCOP", "HEURA"];
+const data = ["Moxka", "Origin", "Paradise", "URSCOP"];
 
 function Partners() {
     const carouselRef = useRef();
     console.log(carouselRef.current);
 
-    // useLayoutEffect(() => {
-    //     gsap.to(carouselRef.current, { rotation: "+=360" });
-    // });
     return (
         <Stack
             id="partners"
@@ -21,22 +16,25 @@ function Partners() {
             justifyContent="start"
             gap="1rem"
             sx={{
-                // minHeight: "100vh",
                 padding: "1rem",
                 paddingBlock: "10rem",
                 backgroundColor: "success.main",
             }}
         >
             <Typography variant="outlinedh2">Nos partenaires</Typography>
-            <Stack ref={carouselRef} gap="1rem">
+            <Marquee gradientColor={[70, 91, 60]}>
                 {data.map((d) => {
                     return (
-                        <Typography key={data.indexOf(d)} variant="h2">
+                        <Typography
+                            key={data.indexOf(d)}
+                            variant="h2"
+                            sx={{ marginInline: "1rem" }}
+                        >
                             {d}
                         </Typography>
                     );
                 })}
-            </Stack>
+            </Marquee>
         </Stack>
     );
 }

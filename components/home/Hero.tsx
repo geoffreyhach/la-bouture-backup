@@ -1,11 +1,13 @@
 import React, { useLayoutEffect, useRef } from "react";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 import Header from "../Header";
 
 import { Stack } from "@mui/system";
+import Booking from "../Menu/Booking";
+import { Block } from "@mui/icons-material";
 
 function Hero() {
     gsap.registerPlugin(ScrollTrigger);
@@ -36,13 +38,20 @@ function Hero() {
             }}
         >
             <Header />
+
             <Stack
                 ref={ref}
                 alignItems="center"
                 sx={{ position: "relative", inset: "0", margin: "auto" }}
+                gap="3rem"
             >
-                <Typography variant="h2">GOOD FOOD</Typography>
-                <Typography variant="outlinedh2">GOOD PEOPLE</Typography>
+                <Stack alignItems="center">
+                    <Typography variant="h2">GOOD FOOD</Typography>
+                    <Typography variant="outlinedh2">GOOD PEOPLE</Typography>
+                </Stack>
+                <Box sx={{ display: { xs: "block", md: "none" } }}>
+                    <Booking />
+                </Box>
             </Stack>
         </Stack>
     );
