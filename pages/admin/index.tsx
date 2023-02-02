@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import axios from "axios";
 import { Box } from "@mui/system";
@@ -76,6 +76,7 @@ interface DashboardProps {
 
 function Dashboard({ resa }: DashboardProps) {
     const [today, setToday] = useState(dayjs);
+    console.log(resa);
 
     return (
         <Stack
@@ -170,7 +171,7 @@ function Dashboard({ resa }: DashboardProps) {
     );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const res = await getData();
     const resa = JSON.parse(res);
     return {
