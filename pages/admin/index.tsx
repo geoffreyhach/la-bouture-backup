@@ -74,8 +74,6 @@ interface DashboardProps {
 function Dashboard({ resa }: DashboardProps) {
     const [today, setToday] = useState(dayjs);
 
-    console.log(dayjs(resa[1].date).isSame(today, "day"));
-
     return (
         <Stack
             gap="3rem"

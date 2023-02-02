@@ -6,7 +6,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
-console.log(token);
 
 function Address() {
     gsap.registerPlugin(ScrollTrigger);
