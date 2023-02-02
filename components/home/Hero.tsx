@@ -30,16 +30,18 @@ function Hero() {
             sx={{
                 position: "relative",
                 height: "100vh",
-                backgroundColor: "primary.main",
+                backgroundColor: "secondary.main",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
         >
             <Header />
+
             <Image
                 src="/home.webp"
                 alt="background"
                 fill
+                priority
                 style={{ objectFit: "cover", zIndex: "0" }}
             />
             <Stack
