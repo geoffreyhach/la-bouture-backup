@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme/theme";
+import "../components/Menu/datepicker.css";
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
