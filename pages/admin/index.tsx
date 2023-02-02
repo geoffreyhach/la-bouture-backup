@@ -119,7 +119,9 @@ function Dashboard({ resa }: DashboardProps) {
                     padding: "2rem",
                 }}
             >
-                <Typography variant="h3">Réservations futures</Typography>
+                <Typography variant="h3" color="primary">
+                    Réservations futures
+                </Typography>
                 <DataGrid
                     rows={resa.filter((r) =>
                         dayjs(r.date).isAfter(today, "day")

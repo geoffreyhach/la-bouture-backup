@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
     Box,
     Button,
@@ -7,14 +8,15 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import dayjs, { Dayjs } from "dayjs";
-
 import EastIcon from "@mui/icons-material/East";
 
-import axios from "axios";
+//phone library
+import { MuiTelInput } from "mui-tel-input";
 
-import DatePicker from "react-datepicker";
+//date library
 import "react-datepicker/dist/react-datepicker.css";
+import dayjs, { Dayjs } from "dayjs";
+import DatePicker from "react-datepicker";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
@@ -70,9 +72,8 @@ const closedHours = [
 
 function Booking() {
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const [send, setSend] = useState(true);
+    const [isValid, setIsValid] = useState(false);
+    const [send, setSend] = useState(false);
     const [resa, setResa] = useState({
         client: "",
         number: "",
@@ -80,19 +81,41 @@ function Booking() {
         date: "",
     });
     const [date, setDate] = useState(setHours(setMinutes(new Date(), 0), 12));
-    console.log(dayjs(date));
+    const [phone, setPhone] = useState("");
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setResa({ ...resa, [name]: value });
     };
 
+    const handlePhoneChange = (newPhone) => {
+        setPhone(newPhone);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newResa = { ...resa, date: date };
+        const newResa = { ...resa, date: date, phone: phone };
         console.log(newResa);
         await axios.post("/api/resa", newResa);
+        setSend(true);
     };
+
+    //Check if every fields are filled
+    useEffect(() => {
+        const validate = () => {
+            return (
+                resa.client.length > 1 &&
+                resa.number.length > 0 &&
+                phone.length > 1
+            );
+        };
+        const isValid = validate();
+        setIsValid(isValid);
+    }, [phone, resa.client, resa.number]);
+
     return (
         <>
             <Button variant="contained" color="secondary" onClick={handleOpen}>
@@ -133,15 +156,14 @@ function Booking() {
                             name="number"
                             required
                         />
-                        <TextField
-                            type="number"
-                            label="Numéro de téléphone"
-                            variant="outlined"
-                            value={resa.phone}
-                            onChange={handleChange}
+                        <MuiTelInput
+                            value={phone}
+                            onChange={handlePhoneChange}
                             name="phone"
-                            required
+                            defaultCountry="FR"
+                            preferredCountries={["FR", "BE", "DE", "GB"]}
                         />
+
                         <DatePicker
                             wrapperClassName="datePicker"
                             selected={date}
@@ -153,16 +175,22 @@ function Booking() {
                             excludeTimes={closedHours}
                             minDate={moment().toDate()}
                         />
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="success"
-                            // disabled={send}
-                        >
-                            <Typography color="secondary">
-                                Reservez votre table
-                            </Typography>
-                        </Button>
+                        {send ? (
+                            <Typography textAlign="center">{`Réservation validée pour le ${dayjs(
+                                date
+                            ).format("D/MM/YYYY à HH:mm")}`}</Typography>
+                        ) : (
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="success"
+                                disabled={!isValid}
+                            >
+                                <Typography color="secondary">
+                                    Reservez votre table
+                                </Typography>
+                            </Button>
+                        )}
                     </form>
                 </Box>
             </Modal>
