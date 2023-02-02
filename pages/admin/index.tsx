@@ -8,6 +8,9 @@ import { v4 as uuidv4 } from "uuid";
 import { Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
 
+import { Resa } from "../api/resa.model";
+import { getData } from "../api/resa";
+
 const todaysColumns: GridColDef[] = [
     {
         field: "date",
@@ -168,8 +171,8 @@ function Dashboard({ resa }: DashboardProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const res = await axios.get("http://localhost:3000/api/resa");
-    const resa = res.data;
+    const res = await getData();
+    const resa = JSON.parse(res);
     return {
         props: {
             resa,
