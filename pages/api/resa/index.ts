@@ -11,9 +11,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     if (req.method === "POST") {
-        console.log(Resa);
         const { date, client, number, phone } = req.body;
-        console.log(req.body);
 
         const resa = new Resa({
             date,
