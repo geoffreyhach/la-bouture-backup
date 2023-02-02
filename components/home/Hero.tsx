@@ -1,13 +1,12 @@
 import React, { useLayoutEffect, useRef } from "react";
 import { Box, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 import Header from "../Header";
-
-import { Stack } from "@mui/system";
 import Booking from "../Menu/Booking";
-import { Block } from "@mui/icons-material";
+import Image from "next/image";
 
 function Hero() {
     gsap.registerPlugin(ScrollTrigger);
@@ -23,22 +22,26 @@ function Hero() {
             y: 100,
         });
     }, []);
+
     return (
         <Stack
             justifyContent="flex-start"
             alignItems="center"
             sx={{
-                position: "unset",
+                position: "relative",
                 height: "100vh",
-                // padding: "1rem",
                 backgroundColor: "primary.main",
-                backgroundImage: 'url("./home.jpg")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
         >
+            <Image
+                src="/home.webp"
+                alt="background"
+                fill
+                style={{ objectFit: "cover" }}
+            />
             <Header />
-
             <Stack
                 ref={ref}
                 alignItems="center"
