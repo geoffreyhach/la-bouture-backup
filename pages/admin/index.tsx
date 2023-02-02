@@ -101,8 +101,8 @@ function Dashboard({ resa }: DashboardProps) {
                     )}
                     getRowId={(resa: Reservation) => uuidv4()}
                     columns={todaysColumns}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
+                    pageSize={10}
+                    rowsPerPageOptions={[10]}
                     experimentalFeatures={{ newEditingApi: true }}
                     initialState={{
                         sorting: {

@@ -118,8 +118,16 @@ function Booking() {
 
     return (
         <>
+            <span
+                className="anchor"
+                id="resa"
+                style={{
+                    position: "absolute",
+                    transform: "translateY(-25vh)",
+                }}
+            ></span>
             <Button variant="contained" color="secondary" onClick={handleOpen}>
-                <Stack id="resa" direction="row" gap="1rem">
+                <Stack direction="row" gap="1rem">
                     Réserver une table
                     <EastIcon />
                 </Stack>

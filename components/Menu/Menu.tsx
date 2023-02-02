@@ -7,6 +7,7 @@ import drink from "../../public/drinks.png";
 import food from "../../public/food.png";
 import MenuSection from "./MenuSection";
 import Booking from "./Booking";
+import Link from "next/link";
 
 function Menu() {
     return (
@@ -35,9 +36,11 @@ function Menu() {
             />
 
             <Stack direction="row" gap="1rem">
-                <Button variant="contained" color="secondary">
-                    Voir le menu
-                </Button>
+                <Link href="https://bonjourmenu.fr/view/demo">
+                    <Button variant="contained" color="secondary">
+                        Voir le menu
+                    </Button>
+                </Link>
                 <Divider
                     orientation="vertical"
                     flexItem
