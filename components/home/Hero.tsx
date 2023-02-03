@@ -16,10 +16,10 @@ function Hero() {
         gsap.to(ref.current, {
             scrollTrigger: {
                 trigger: ref.current,
-                start: 100,
+                start: "bottom center",
                 scrub: true,
             },
-            y: 100,
+            y: 180,
         });
     }, []);
 

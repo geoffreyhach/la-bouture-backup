@@ -1,9 +1,12 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import React, { useLayoutEffect, useRef, useState } from "react";
 import Map, { Marker } from "react-map-gl";
 import PlaceIcon from "@mui/icons-material/Place";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+import TramIcon from "@mui/icons-material/Tram";
+import DirectionsBusIcon from "@mui/icons-material/DirectionsBus";
 
 const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
@@ -53,6 +56,18 @@ function Address() {
                 gap="1rem"
                 sx={{ backgroundColor: "secondary.main", padding: "2rem" }}
             >
+                <Typography
+                    variant="h2"
+                    noWrap
+                    sx={{
+                        WebkitTextStroke: {
+                            xs: "3px #465B3C",
+                            md: "5px #465B3C",
+                        },
+                    }}
+                >
+                    NOUS TROUVER
+                </Typography>
                 <Map
                     {...viewState}
                     ref={mapRef}
@@ -78,31 +93,35 @@ function Address() {
                         <PlaceIcon fontSize="large" color="primary" />
                     </Marker>
                 </Map>
-                <Stack alignItems="center" sx={{ opacity: ".5" }}>
-                    <Typography>Nous trouver :</Typography>
-                    <Typography sx={{ fontStyle: "italic" }}>
-                        {`11 Presqu'île André-Malraux, 67100 Strasbourg`}
-                    </Typography>
-                    <Typography sx={{ fontStyle: "italic" }} display="inline">
-                        <Box
-                            component="span"
-                            sx={{ fontWeight: "bold" }}
-                            display="inline"
-                        >
-                            Arrêt de tram :
-                        </Box>{" "}
-                        Winston Churchill (ligne C/E)
-                    </Typography>
-                    <Typography sx={{ fontStyle: "italic" }} display="inline">
-                        <Box
-                            component="span"
-                            sx={{ fontWeight: "bold" }}
-                            display="inline"
-                        >
-                            Arrêt de bus :
-                        </Box>{" "}
-                        Sécurité Sociale
-                    </Typography>
+                <Stack
+                    alignItems="flex-start"
+                    gap=".5rem"
+                    divider={<Divider orientation="horizontal" flexItem />}
+                    sx={{ opacity: ".5" }}
+                >
+                    <Stack direction="row" alignItems="center" gap=".5rem">
+                        <PlaceIcon />
+                        <Stack justifyContent="flex-start">
+                            <Typography variant="body1">
+                                {`11 Presqu'île André-Malraux`}
+                            </Typography>
+                            <Typography variant="body1">
+                                67100 Strasbourg
+                            </Typography>
+                        </Stack>
+                    </Stack>
+                    <Stack direction="row" alignItems="center" gap=".5rem">
+                        <TramIcon />
+                        <Typography variant="body1" display="inline">
+                            Winston Churchill (ligne C/E)
+                        </Typography>
+                    </Stack>
+                    <Stack direction="row" alignItems="center" gap=".5rem">
+                        <DirectionsBusIcon />
+                        <Typography variant="body1" display="inline">
+                            Sécurité Sociale (L1)
+                        </Typography>
+                    </Stack>
                 </Stack>
             </Stack>
         </>

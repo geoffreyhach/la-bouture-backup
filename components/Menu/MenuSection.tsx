@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import { Typography } from "@mui/material";
 import { Stack } from "@mui/system";
@@ -21,16 +21,17 @@ function MenuSection({ reversed, title, text, image }: MenuSectionProps) {
         else return 50;
     };
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         gsap.from(imgRef.current, {
             scrollTrigger: {
                 trigger: imgRef.current,
                 start: "top bottom",
-                end: "top center",
+                end: "bottom center",
                 scrub: true,
             },
             x: getImgXValue(),
         });
+        // eslint-disable-next-line
     }, [reversed]);
 
     return (

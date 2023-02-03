@@ -1,8 +1,13 @@
 import { createTheme } from "@mui/material/styles";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 import "@fontsource/cormorant-garamond";
+import "@fontsource/inter";
 
 const defaultTheme = createTheme();
+
+const yellow = "#C78F3D";
+const red = "#B74217";
+const green = "#465B3C";
 
 const theme = createTheme({
     typography: {
@@ -61,17 +66,18 @@ const theme = createTheme({
                 fontSize: "1.5rem",
             },
         },
+        body1: { fontFamily: "Inter" },
     } as ExtendedTypographyOptions,
 
     palette: {
         primary: {
-            main: "#B74217",
+            main: red,
         },
         secondary: {
-            main: "#C78F3D",
+            main: yellow,
         },
         success: {
-            main: "#465B3C",
+            main: green,
         },
 
         error: {
