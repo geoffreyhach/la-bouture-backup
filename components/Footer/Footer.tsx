@@ -27,8 +27,12 @@ function Footer() {
             }}
         >
             <Stack direction="row" alignItems="center" gap="1rem">
-                <Typography>La bouture - 2023</Typography>
-                <Typography>Mention légales</Typography>
+                <Typography variant="body1" color="secondary">
+                    la bouture - 2023
+                </Typography>
+                <Typography variant="body1" color="secondary">
+                    Mentions légales
+                </Typography>
             </Stack>
             <Stack direction="row" gap=".5rem">
                 <Link href="https://www.instagram.com/labouture.strasbourg/">

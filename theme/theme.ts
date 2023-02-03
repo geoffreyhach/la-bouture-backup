@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 import "@fontsource/cormorant-garamond";
+import "@fontsource/inter";
 
 const defaultTheme = createTheme();
 
@@ -65,6 +66,7 @@ const theme = createTheme({
                 fontSize: "1.5rem",
             },
         },
+        body1: { fontFamily: "Inter" },
     } as ExtendedTypographyOptions,
 
     palette: {
