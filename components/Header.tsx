@@ -74,7 +74,7 @@ function Header() {
                     md: "space-between",
                     zIndex: "100",
                 }}
-                sx={{ width: "100vw", padding: "2rem 1rem" }}
+                sx={{ width: "100vw", padding: "2.5rem 2rem" }}
             >
                 <Stack
                     direction="row"

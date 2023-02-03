@@ -4,6 +4,10 @@ import "@fontsource/cormorant-garamond";
 
 const defaultTheme = createTheme();
 
+const yellow = "#C78F3D";
+const red = "#B74217";
+const green = "#465B3C";
+
 const theme = createTheme({
     typography: {
         h1: {
@@ -65,13 +69,13 @@ const theme = createTheme({
 
     palette: {
         primary: {
-            main: "#B74217",
+            main: red,
         },
         secondary: {
-            main: "#C78F3D",
+            main: yellow,
         },
         success: {
-            main: "#465B3C",
+            main: green,
         },
 
         error: {

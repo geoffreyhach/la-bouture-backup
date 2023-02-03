@@ -53,6 +53,18 @@ function Address() {
                 gap="1rem"
                 sx={{ backgroundColor: "secondary.main", padding: "2rem" }}
             >
+                <Typography
+                    variant="h2"
+                    noWrap
+                    sx={{
+                        WebkitTextStroke: {
+                            xs: "3px #465B3C",
+                            md: "5px #465B3C",
+                        },
+                    }}
+                >
+                    NOUS TROUVER
+                </Typography>
                 <Map
                     {...viewState}
                     ref={mapRef}
