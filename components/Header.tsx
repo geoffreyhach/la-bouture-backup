@@ -4,14 +4,29 @@ import Link from "@mui/material/Link";
 import React from "react";
 
 const menuLinkStyle = {
+    position: "relative",
     fontFamily: "arial",
     fontWeight: 700,
     color: "secondary.main",
     textDecoration: "none",
     fontSize: { xs: "1rem", md: "1.5rem" },
     textTransform: "uppercase",
+    "&:after": {
+        content: '""',
+        position: "absolute",
+        width: "100%",
+        height: "3px",
+        backgroundColor: "#C78F3D",
+        bottom: "-1px",
+        left: "0",
+        transform: "scaleX(0)",
+    },
     "&:hover": {
-        textDecoration: "underline",
+        "&:after": {
+            transform: "scaleX(1)",
+            transition: "transform 300ms ease-in-out",
+            transformOrigin: "left",
+        },
     },
 };
 
@@ -30,7 +45,6 @@ function Header() {
                 }}
             >
                 <svg
-                    // width="329"
                     height="80"
                     viewBox="0 0 329 463"
                     fill="none"
@@ -100,6 +114,13 @@ function Header() {
                     sx={{
                         ...menuLinkStyle,
                         display: { xs: "none", md: "flex" },
+                        "&:hover": {
+                            "&:after": {
+                                transform: "scaleX(1)",
+                                transition: "transform 300ms ease-in-out",
+                                transformOrigin: "right",
+                            },
+                        },
                     }}
                 >
                     Contact
