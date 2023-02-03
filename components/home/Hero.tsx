@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { ReactElement, useLayoutEffect, useRef } from "react";
 import { Box, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import gsap from "gsap";
@@ -8,7 +8,7 @@ import Header from "../Header";
 import Booking from "../Menu/Booking";
 import Image from "next/image";
 
-function Hero() {
+function Hero(): ReactElement {
     gsap.registerPlugin(ScrollTrigger);
     const ref = useRef(null);
 
