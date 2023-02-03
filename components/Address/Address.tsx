@@ -19,6 +19,17 @@ function Address() {
         zoom: 3,
     });
 
+    const style = {
+        backgroundColor: "#C78F3D",
+        opacity: "1",
+        backgroundImage:
+            "linear-gradient(#465B3C 2.2px, transparent 2.2px), linear-gradient(90deg, #465B3C 2.2px, transparent 2.2px), linear-gradient(#465B3C 1.1px, transparent 1.1px), linear-gradient(90deg, #465B3C 1.1px, #C78F3D 1.1px)",
+        backgroundSize: "55px 55px, 55px 55px, 11px 11px, 11px 11px",
+        backgroundPosition:
+            "-2.2px -2.2px, -2.2px -2.2px, -1.1px -1.1px, -1.1px -1.1px",
+        padding: "2rem",
+    };
+
     const flyToLaBouture = () => {
         if (mapRef.current !== null) {
             const map = mapRef.current;
@@ -54,7 +65,8 @@ function Address() {
             <Stack
                 alignItems="center"
                 gap="1rem"
-                sx={{ backgroundColor: "secondary.main", padding: "2rem" }}
+                // sx={{ backgroundColor: "secondary.main", padding: "2rem" }}
+                sx={style}
             >
                 <Typography
                     variant="h2"
@@ -96,29 +108,48 @@ function Address() {
                 <Stack
                     alignItems="flex-start"
                     gap=".5rem"
-                    divider={<Divider orientation="horizontal" flexItem />}
-                    sx={{ opacity: ".5" }}
+                    divider={
+                        <Divider
+                            orientation="horizontal"
+                            color="#C78F3D"
+                            flexItem
+                        />
+                    }
+                    sx={{
+                        padding: "1rem",
+                        backgroundColor: "success.main",
+                        border: "8px solid",
+                        borderColor: "secondary.main",
+                    }}
                 >
                     <Stack direction="row" alignItems="center" gap=".5rem">
-                        <PlaceIcon />
+                        <PlaceIcon color="secondary" />
                         <Stack justifyContent="flex-start">
-                            <Typography variant="body1">
+                            <Typography variant="body1" color="secondary.main">
                                 {`11 Presqu'île André-Malraux`}
                             </Typography>
-                            <Typography variant="body1">
+                            <Typography variant="body1" color="secondary.main">
                                 67100 Strasbourg
                             </Typography>
                         </Stack>
                     </Stack>
                     <Stack direction="row" alignItems="center" gap=".5rem">
-                        <TramIcon />
-                        <Typography variant="body1" display="inline">
+                        <TramIcon color="secondary" />
+                        <Typography
+                            variant="body1"
+                            color="secondary.main"
+                            display="inline"
+                        >
                             Winston Churchill (ligne C/E)
                         </Typography>
                     </Stack>
                     <Stack direction="row" alignItems="center" gap=".5rem">
-                        <DirectionsBusIcon />
-                        <Typography variant="body1" display="inline">
+                        <DirectionsBusIcon color="secondary" />
+                        <Typography
+                            variant="body1"
+                            color="secondary.main"
+                            display="inline"
+                        >
                             Sécurité Sociale (L1)
                         </Typography>
                     </Stack>

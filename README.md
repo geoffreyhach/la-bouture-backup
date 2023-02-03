@@ -16,6 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 -   [Next.js ](https://nextjs.org/) Framework front & back
 -   [MUI](https://mui.com/) - Framework CSS
+-   [GSAP](https://greensock.com/gsap/) - Animations
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
