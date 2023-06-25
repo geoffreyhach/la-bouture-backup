@@ -81,21 +81,21 @@ function Booking() {
         date: "",
     });
     const [date, setDate] = useState(setHours(setMinutes(new Date(), 0), 12));
-    const [phone, setPhone] = useState("");
+    const [phone, setPhone] = useState<string>("");
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setResa({ ...resa, [name]: value });
     };
 
-    const handlePhoneChange = (newPhone) => {
+    const handlePhoneChange = (newPhone: string) => {
         setPhone(newPhone);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newResa = { ...resa, date: date, phone: phone };
 
@@ -175,8 +175,7 @@ function Booking() {
                         <DatePicker
                             wrapperClassName="datePicker"
                             selected={date}
-                            onChange={(date) => setDate(date)}
-                            showTime={{ user12hours: false }}
+                            onChange={(date: Date) => setDate(date)}
                             showTimeSelect
                             locale="fr"
                             dateFormat="d MMMM yyyy, HH:mm"

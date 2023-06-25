@@ -1,39 +1,44 @@
 import React from "react";
+import useSWR from "swr";
 import { Stack, Typography } from "@mui/material";
 import Marquee from "react-fast-marquee";
-
-const data = ["Moxka", "Origin", "Paradise", "URSCOP"];
+import { endpoint } from "@/config/httpConfig";
 
 function Partners() {
-    return (
-        <Stack
-            id="partners"
-            direction="column"
-            alignItems="center"
-            justifyContent="start"
-            gap="1rem"
-            sx={{
-                padding: "1rem",
-                paddingBlock: "10rem",
-                backgroundColor: "success.main",
-            }}
-        >
-            <Typography variant="outlinedh2">Nos partenaires</Typography>
-            <Marquee gradientColor={[70, 91, 60]}>
-                {data.map((d) => {
-                    return (
-                        <Typography
-                            key={data.indexOf(d)}
-                            variant="h2"
-                            sx={{ marginInline: "1rem" }}
-                        >
-                            {d}
-                        </Typography>
-                    );
-                })}
-            </Marquee>
-        </Stack>
-    );
+  const { data: partners, isLoading } = useSWR(
+    `${endpoint}/api/partners?populate=*`
+  );
+
+  return (
+    <Stack
+      id="partners"
+      direction="column"
+      alignItems="center"
+      justifyContent="start"
+      gap="1rem"
+      sx={{
+        padding: "1rem",
+        paddingBlock: "10rem",
+        backgroundColor: "success.main",
+      }}
+    >
+      <Typography variant="outlinedh2">Nos partenaires</Typography>
+      <Marquee gradientColor={[70, 91, 60]}>
+        {!isLoading &&
+          partners.data.map((partner: any) => {
+            return (
+              <Typography
+                key={partner.id}
+                variant="h2"
+                sx={{ marginInline: "1rem" }}
+              >
+                {partner.attributes.Nom}
+              </Typography>
+            );
+          })}
+      </Marquee>
+    </Stack>
+  );
 }
 
 export default Partners;
